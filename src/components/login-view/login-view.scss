@@ -1,15 +1,20 @@
-form {
-  display: grid;
+.login-container {
+  height: 100vh;
 }
 
-label {
-  display: block;
-  padding: 20px;
+.login-card {
   margin: auto;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  max-width: 450px;
 }
 
-button {
-  width: 200px;
-  margin: 5px auto;
-  font-size: 15px;
+div.login-form-group-username {
+  margin-bottom: 20px;
+}
+
+.button-login-view {
+  margin-top: 20px;
+  margin-right: 20px;
 }

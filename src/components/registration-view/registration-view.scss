@@ -1,15 +1,21 @@
-form {
-  display: grid;
+.registration-container {
+  height: 100vh;
 }
 
-label {
-  display: block;
-  padding: 20px;
+.registration-card {
   margin: auto;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  max-width: 450px;
 }
 
-button {
-  width: 200px;
-  margin: 5px auto;
-  font-size: 15px;
+div.registration-form-group-username,
+div.registration-form-group-password,
+div.registration-form-group-email {
+  margin-bottom: 20px;
+}
+
+.button-registration-view {
+  margin-top: 20px;
 }

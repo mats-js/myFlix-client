@@ -1,35 +1,18 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
+.movie-textarea.card-body {
+  padding: 0 15px 0 0;
 }
 
-img {
-  max-width: 200px;
-  height: 100%;
-  float: right;
-  margin-left: 10px;
-  margin-bottom: 10px;
+span.movie-description {
+  display: block;
+  padding-bottom: 15px;
 }
 
-.movie-view {
-  margin: 10px;
-  max-width: 800px;
-  padding: 10px;
-  border: 1px solid black;
-  border-radius: 5px;
-  background-color: rgba(55, 55, 151, 0.222);
-}
-
-.movie-title {
-  font-weight: bold;
-  font-size: 20px;
-  padding-bottom: 10px;
+div.movie-genre-description,
+div.movie-actors {
+  display: block;
+  padding-bottom: 15px;
 }
 
 .label {
   font-weight: bold;
-}
-
-button {
-  margin-top: 10px;
 }

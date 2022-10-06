@@ -1,4 +1,7 @@
-.my-flix {
-  color: steelblue;
+html,
+.app-container,
+.container {
+  background-color: black;
+  height: 100vh;
 }
 /*# sourceMappingURL=index.caa67093.css.map */

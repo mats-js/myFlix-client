@@ -1,0 +1,38 @@
+.login-card {
+  margin: auto;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  max-width: 450px;
+}
+
+.button {
+  margin-top: 20px;
+  margin-right: 20px;
+}
+.registration-card {
+  margin: auto;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  max-width: 450px;
+}
+
+.button {
+  margin-top: 20px;
+}
+.main-view {
+  margin-top: 50px;
+}
+
+.movie-card {
+  display: flex;
+  padding-bottom: 30px;
+}
+html,
+.app-container,
+.container {
+  background-color: black;
+  height: 100vh;
+}
+/*# sourceMappingURL=index.1d334ea1.css.map */

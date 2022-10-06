@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import './login-view.scss';
+import { Container, Card, Form, Button } from 'react-bootstrap';
 
+import './login-view.scss';
 export default function LoginView(props) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -20,30 +21,55 @@ export default function LoginView(props) {
   };
 
   return (
-    <form>
-      <label>
-        Username:
-        <input
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-      </label>
-      <label>
-        Password:
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </label>
-      <button type="submit" onClick={handleSubmit}>
-        Log in
-      </button>
-      <button type="button" onClick={handleRegisterClick}>
-        Register
-      </button>
-    </form>
+    <Container className="login-container">
+      <Card bg="dark" text="light" className="login-card">
+        <Card.Header className="text-center" as="h5">
+          Login
+        </Card.Header>
+        <Card.Body>
+          <Form>
+            <Form.Group
+              className="login-form-group-username"
+              controlId="formUsername"
+            >
+              <Form.Label>Username:</Form.Label>
+              <Form.Control
+                type="text"
+                onChange={(e) => setUsername(e.target.value)}
+              />
+            </Form.Group>
+
+            <Form.Group
+              className="form-group-password"
+              controlId="formPassword"
+            >
+              <Form.Label>Password:</Form.Label>
+              <Form.Control
+                type="password"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </Form.Group>
+
+            <Button
+              className="button-login-view"
+              variant="secondary"
+              type="submit"
+              onClick={handleSubmit}
+            >
+              Log in
+            </Button>
+            <Button
+              className="button-login-view"
+              variant="secondary"
+              type="submit"
+              onClick={handleRegisterClick}
+            >
+              Register
+            </Button>
+          </Form>
+        </Card.Body>
+      </Card>
+    </Container>
   );
 }
 

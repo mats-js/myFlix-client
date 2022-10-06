@@ -1,12 +1,5 @@
-* {
-  box-sizing: border-box;
-}
-
-.movie-card {
-  margin: 15px;
-  padding: 10px;
-  border: 1px solid black;
-  border-radius: 5px;
-  width: calc(100vw - 30px);
-  background-color: rgba(55, 55, 151, 0.222);
+.button-movie-card {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
 }

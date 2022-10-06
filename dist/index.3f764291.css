@@ -1,81 +1,77 @@
-* {
-  box-sizing: border-box;
+.button-movie-card {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+.movie-textarea.card-body {
+  padding: 0 15px 0 0;
 }
 
-.movie-card {
-  margin: 15px;
-  padding: 10px;
-  border: 1px solid black;
-  border-radius: 5px;
-  width: calc(100vw - 30px);
-  background-color: rgba(55, 55, 151, 0.222);
-}
-* {
-  box-sizing: border-box;
-  margin: 0;
+span.movie-description {
+  display: block;
+  padding-bottom: 15px;
 }
 
-img {
-  max-width: 200px;
-  height: 100%;
-  float: right;
-  margin-left: 10px;
-  margin-bottom: 10px;
-}
-
-.movie-view {
-  margin: 10px;
-  max-width: 800px;
-  padding: 10px;
-  border: 1px solid black;
-  border-radius: 5px;
-  background-color: rgba(55, 55, 151, 0.222);
-}
-
-.movie-title {
-  font-weight: bold;
-  font-size: 20px;
-  padding-bottom: 10px;
+div.movie-genre-description,
+div.movie-actors {
+  display: block;
+  padding-bottom: 15px;
 }
 
 .label {
   font-weight: bold;
 }
-
-button {
-  margin-top: 10px;
-}
-form {
-  display: grid;
+.login-container {
+  height: 100vh;
 }
 
-label {
-  display: block;
-  padding: 20px;
+.login-card {
   margin: auto;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  max-width: 450px;
 }
 
-button {
-  width: 200px;
-  margin: 5px auto;
-  font-size: 15px;
-}
-form {
-  display: grid;
+div.login-form-group-username {
+  margin-bottom: 20px;
 }
 
-label {
-  display: block;
-  padding: 20px;
+.button-login-view {
+  margin-top: 20px;
+  margin-right: 20px;
+}
+.registration-container {
+  height: 100vh;
+}
+
+.registration-card {
   margin: auto;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  max-width: 450px;
 }
 
-button {
-  width: 200px;
-  margin: 5px auto;
-  font-size: 15px;
+div.registration-form-group-username,
+div.registration-form-group-password,
+div.registration-form-group-email {
+  margin-bottom: 20px;
 }
-.my-flix {
-  color: steelblue;
+
+.button-registration-view {
+  margin-top: 20px;
+}
+.main-view {
+  padding: 50px 0;
+}
+
+.movie-card {
+  display: flex;
+  padding-bottom: 30px;
+}
+html,
+.app-container {
+  background-color: black;
 }
 /*# sourceMappingURL=index.3f764291.css.map */
