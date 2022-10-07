@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import PropTypes from 'prop-types';
 import { Container, Card, Form, Button } from 'react-bootstrap';
 
@@ -6,18 +7,48 @@ import './login-view.scss';
 export default function LoginView(props) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  // Declare hook for each input
+  const [usernameErr, setUsernameErr] = useState('');
+  const [passwordErr, setPasswordErr] = useState('');
+
+  // Validate user inputs
+  const validate = () => {
+    let isReq = true;
+    if (!username) {
+      setUsernameErr('Username required');
+      isReq = false;
+    } else if (username.length < 2) {
+      setUsernameErr('Username must be 2 or more characters');
+      isReq = false;
+    }
+    if (!password) {
+      setPasswordErr('Password required');
+      isReq = false;
+    } else if (password.length < 6) {
+      setPasswordErr('Password must be 6 or more characters');
+      isReq = false;
+    }
+
+    return isReq;
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(username, password);
-    /* Send a request to the server for authentication */
-    /* then call props.onLoggedIn(username) */
-    props.onLoggedIn(username);
-  };
-
-  const handleRegisterClick = (e) => {
-    e.preventDefault();
-    props.toRegister();
+    const isReq = validate();
+    if (isReq) {
+      axios
+        .post('https://mats-js-myflixdb.herokuapp.com/login', {
+          Username: username,
+          Password: password,
+        })
+        .then((res) => {
+          const data = res.data;
+          props.onLoggedIn(data);
+        })
+        .catch((e) => {
+          console.log('User does not exist');
+        });
+    }
   };
 
   return (
@@ -35,8 +66,11 @@ export default function LoginView(props) {
               <Form.Label>Username:</Form.Label>
               <Form.Control
                 type="text"
+                placeholder="Enter username"
+                value={username}
                 onChange={(e) => setUsername(e.target.value)}
               />
+              {usernameErr && <p>{usernameErr}</p>}
             </Form.Group>
 
             <Form.Group
@@ -46,8 +80,11 @@ export default function LoginView(props) {
               <Form.Label>Password:</Form.Label>
               <Form.Control
                 type="password"
+                placeholder="Enter password"
+                value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
+              {passwordErr && <p>{passwordErr}</p>}
             </Form.Group>
 
             <Button
@@ -58,14 +95,6 @@ export default function LoginView(props) {
             >
               Log in
             </Button>
-            <Button
-              className="button-login-view"
-              variant="secondary"
-              type="submit"
-              onClick={handleRegisterClick}
-            >
-              Register
-            </Button>
           </Form>
         </Card.Body>
       </Card>
@@ -75,5 +104,4 @@ export default function LoginView(props) {
 
 LoginView.propTypes = {
   onLoggedIn: PropTypes.func.isRequired,
-  toRegister: PropTypes.func.isRequired,
 };

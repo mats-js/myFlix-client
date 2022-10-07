@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { CardGroup, Button, Card } from 'react-bootstrap';
 
+import { Link } from 'react-router-dom';
+
 import './movie-view.scss';
 export default class MovieView extends React.Component {
   render() {
@@ -16,23 +18,24 @@ export default class MovieView extends React.Component {
           <CardGroup>
             <Card bg="dark" border="dark" text="light">
               <Card.Body className="movie-textarea">
-                <span className="movie-description">{movie.Description}</span>
-                <div className="movie-genre-title">
+                <div className="movie-genre-link">
                   <span className="label">Genre: </span>
-                  <span className="value">{movie.Genre.Name}</span>
-                </div>
-                <div className="movie-genre-description">
+                  <Link to={`/genres/${movie.Genre.Name}`}>
+                    <Button variant="link">{movie.Genre.Name}</Button>
+                  </Link>
+                  {/* <div className="movie-genre-description">
                   <span className="label">Genre description: </span>
                   <span className="value">{movie.Genre.Description}</span>
+                 */}
+                  <div className="movie-director-link">
+                    <span className="label">Director: </span>
+                    <Link to={`/directors/${movie.Director.Name}`}>
+                      <Button variant="link">{movie.Director.Name}</Button>
+                    </Link>
+                  </div>
                 </div>
-                <div className="movie-actors">
-                  <span className="label">Actors: </span>
-                  <span className="value">{movie.Actors}</span>
-                </div>
-                <div className="movie-director-name">
-                  <span className="label">Director: </span>
-                  <span className="value">{movie.Director.Name}</span>
-                </div>
+                <span className="movie-description">{movie.Description}</span>
+                {/*   
                 <div className="movie-director-bio">
                   <span className="label">Director biography: </span>
                   <span className="value">{movie.Director.Bio}</span>
@@ -44,7 +47,7 @@ export default class MovieView extends React.Component {
                 <div className="movie-director-death">
                   <span className="label">Director death: </span>
                   <span className="value">{movie.Director.Death}</span>
-                </div>
+                </div> */}
               </Card.Body>
             </Card>
             <Card bg="dark" border="dark" text="light">
@@ -62,7 +65,7 @@ export default class MovieView extends React.Component {
             className="button-movie-view"
             variant="secondary"
             onClick={() => {
-              onBackClick(null);
+              onBackClick();
             }}
           >
             Back
