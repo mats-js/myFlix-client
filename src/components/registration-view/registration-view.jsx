@@ -21,8 +21,8 @@ export default function RegistrationView(props) {
     if (!username) {
       setUsernameErr('Username required');
       isReq = false;
-    } else if (username.length < 2) {
-      setUsernameErr('Username must be 2 or more characters');
+    } else if (username.length < 5) {
+      setUsernameErr('Username must be 5 or more characters');
       isReq = false;
     }
     if (!password) {
@@ -57,7 +57,7 @@ export default function RegistrationView(props) {
         .then((res) => {
           const data = res.data;
           console.log(data);
-          alert('Registration sucessful! Please login.');
+          alert('Registration successful! Please login.');
           window.open('/', '_self');
         })
         .catch((e) => {

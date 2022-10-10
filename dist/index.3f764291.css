@@ -21,6 +21,11 @@ div.movie-actors {
 .label {
   font-weight: bold;
 }
+
+.button-movie-view-add-favorite {
+  position: absolute;
+  right: 10px;
+}
 .login-container {
   height: 100vh;
 }
@@ -70,7 +75,40 @@ div.registration-form-group-email {
   display: flex;
   padding-bottom: 30px;
 }
+.profile-container {
+  height: 100vh;
+}
 
+div.profile-form-group-username,
+div.profile-form-group-password,
+div.profile-form-group-email {
+  margin-bottom: 20px;
+}
+
+.button-profile-view-update {
+  margin-top: 20px;
+}
+
+.button-profile-view-delete {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+span.label.headline-profile-mini-cards {
+  padding: 30px 0 20px 0;
+}
+
+.profile-movie-card-link {
+  color: white;
+}
+
+.button-profile-view-remove-favorite {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
 .movie-genre-description > span.label,
 .headline-genre-mini-cards {
   display: block;

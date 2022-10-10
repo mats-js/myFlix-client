@@ -1,5 +1,6 @@
 import React from 'react';
-import { Navbar, Container, Nav, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { Navbar, Container, Nav, Button, Nav } from 'react-bootstrap';
 
 export default function NavBar({ user }) {
   const onLoggedOut = () => {
@@ -27,13 +28,17 @@ export default function NavBar({ user }) {
       variant="dark"
     >
       <Container>
-        <Navbar.Brand className="navbar-logo" href="/">
+        <Navbar.Brand className="navbar-logo" as={Link} to="/">
           myFlix
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mal-auto">
-            {isAuth() && <Nav.Link href={`/users/${user}`}>{user}</Nav.Link>}
+            {isAuth() && (
+              <Nav.Link as={Link} to={`/users/${user}`}>
+                {user}
+              </Nav.Link>
+            )}
             {isAuth() && (
               <Button
                 variant="link"
@@ -44,8 +49,16 @@ export default function NavBar({ user }) {
                 Logout
               </Button>
             )}
-            {!isAuth() && <Nav.Link href="/">Login</Nav.Link>}
-            {!isAuth() && <Nav.Link href="/register">Sign Up</Nav.Link>}
+            {!isAuth() && (
+              <Nav.Link as={Link} to="/">
+                Login
+              </Nav.Link>
+            )}
+            {!isAuth() && (
+              <Nav.Link as={Link} to="/register">
+                Sign Up
+              </Nav.Link>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Container>

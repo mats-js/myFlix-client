@@ -32,22 +32,13 @@ export default class MainView extends React.Component {
   onLoggedIn(authData) {
     console.log(authData);
     const { Username, FavoriteMovies } = authData.user;
-    this.setState(
-      {
-        user: Username,
-        favoriteMovies: FavoriteMovies || [],
-      },
-      () => {
-        console.log(this.state.favoriteMovies);
-      }
-    );
+    this.setState({
+      user: Username,
+      favoriteMovies: FavoriteMovies || [],
+    });
 
     localStorage.setItem('token', authData.token);
     localStorage.setItem('user', authData.user.Username);
-    localStorage.setItem(
-      'favoriteMovies',
-      JSON.stringify(authData.user.FavoriteMovies)
-    );
     this.getMovies(authData.token);
   }
 
@@ -66,56 +57,64 @@ export default class MainView extends React.Component {
       });
   }
 
-  /*       handleFavorite = (movieId, action) => {
+  addFavorite(movieId) {
     const { user, favoriteMovies } = this.state;
-    const accessToken = localStorage.getItem('token');
-    if (accessToken !== null && user !== null) {
-      // Add MovieID to Favorites (local state & webserver)
-      if (action === 'add') {
-        this.setState({ favoriteMovies: [...favoriteMovies, movieId] });
-        axios
-          .post(
-            `https://top-flix.herokuapp.com/users/${username}/favorites/${movieId}`,
-            {},
-            {
-              headers: { Authorization: `Bearer ${accessToken}` },
-            }
-          )
-          .then((res) => {
-            console.log(`Movie added to ${username} Favorite movies`);
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-
-        // Remove MovieID from Favorites (local state & webserver)
-      } else if (action === 'remove') {
+    const token = localStorage.getItem('token');
+    if (favoriteMovies.some((favId) => favId === movieId)) {
+      console.log('Movie already added to favorites!');
+    } else {
+      if (token !== null && user !== null) {
         this.setState({
-          favoriteMovies: favoriteMovies.filter((id) => id !== movieId),
+          favoriteMovies: [...favoriteMovies, movieId],
         });
         axios
-          .delete(
-            `https://top-flix.herokuapp.com/users/${username}/favorites/${movieId}`,
+          .post(
+            `https://mats-js-myflixdb.herokuapp.com/users/${user}/movies/${movieId}`,
+            {},
             {
-              headers: { Authorization: `Bearer ${accessToken}` },
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
             }
           )
           .then((res) => {
-            console.log(`Movie removed from ${username} Favorite movies`);
+            console.log(`Movie successfully added to favorites!`);
           })
-          .catch((err) => {
-            console.log(err);
+          .catch((e) => {
+            console.error(e);
           });
-      } 
+      }
     }
-  }; */
+  }
+
+  removeFavorite(movieId) {
+    const { user, favoriteMovies } = this.state;
+    const token = localStorage.getItem('token');
+    if (token !== null && user !== null) {
+      this.setState({
+        favoriteMovies: favoriteMovies.filter((movie) => movie !== movieId),
+      });
+      axios
+        .delete(
+          `https://mats-js-myflixdb.herokuapp.com/users/${user}/movies/${movieId}`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        )
+        .then(() => {
+          console.log(`Movie successfully removed from favorites!`);
+        })
+        .catch((e) => {
+          console.error(e);
+        });
+    }
+  }
 
   componentDidMount() {
     let accessToken = localStorage.getItem('token');
     if (accessToken !== null) {
       this.setState({
         user: localStorage.getItem('user'),
-        favoriteMovies: JSON.parse(localStorage.getItem('favoriteMovies')),
       });
       this.getMovies(accessToken);
     }
@@ -185,27 +184,13 @@ export default class MainView extends React.Component {
               return (
                 <Col>
                   <ProfileView
-                    movies={movies}
-                    favorites={movies.filter((m) => {
-                      return favoriteMovies.find((fav) => {
-                        return fav === m.id;
-                      });
+                    favoriteMovies={favoriteMovies.map((movieId) => {
+                      return movies.find((m) => m._id === movieId);
                     })}
-                    /* movies.filter(
-                      (m) => favoriteMovies.indexOf(m._id) === -1
-                    )} */
-                    // handleFavorite={this.handleFavorite}
                     user={user}
+                    removeFavorite={this.removeFavorite.bind(this)}
                     onBackClick={() => history.goBack()}
                   />
-                  {console.log(
-                    favoriteMovies +
-                      movies.filter((m) => {
-                        return favoriteMovies.find((fav) => {
-                          return fav === m.id;
-                        });
-                      })
-                  )}
                 </Col>
               );
             }}
@@ -231,6 +216,7 @@ export default class MainView extends React.Component {
                 <Col md={8} className="movie-view">
                   <MovieView
                     movie={movies.find((m) => m._id === match.params.movieId)}
+                    addFavorite={this.addFavorite.bind(this)}
                     onBackClick={() => history.goBack()}
                   />
                 </Col>

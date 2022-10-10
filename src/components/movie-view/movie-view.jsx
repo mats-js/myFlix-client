@@ -7,12 +7,21 @@ import { Link } from 'react-router-dom';
 import './movie-view.scss';
 export default class MovieView extends React.Component {
   render() {
-    const { movie, onBackClick } = this.props;
+    const { movie, addFavorite, onBackClick } = this.props;
 
     return (
       <Card bg="dark" text="light">
         <Card.Header className="text-center" as="h5">
           {movie.Title}
+          <Button
+            className="button-movie-view-add-favorite"
+            variant="outline-warning"
+            size="sm"
+            type="button"
+            onClick={() => addFavorite(movie._id)}
+          >
+            Add to favorites
+          </Button>
         </Card.Header>
         <Card.Body>
           <CardGroup>
