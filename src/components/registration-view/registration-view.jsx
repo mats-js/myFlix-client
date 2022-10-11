@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import PropTypes from 'prop-types';
 import { Container, Form, Button, Card } from 'react-bootstrap';
 
@@ -8,10 +9,62 @@ export default function RegistrationView(props) {
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const [birthday, setBirthday] = useState('');
+  // Declare hook for each input
+  const [usernameErr, setUsernameErr] = useState('');
+  const [passwordErr, setPasswordErr] = useState('');
+  const [emailErr, setEmailErr] = useState('');
+  const [birthdayErr, setBirthdayErr] = useState('');
+
+  // Validate user inputs
+  const validate = () => {
+    let isReq = true;
+    if (!username) {
+      setUsernameErr('Username required');
+      isReq = false;
+    } else if (username.length < 5) {
+      setUsernameErr('Username must be 5 or more characters');
+      isReq = false;
+    }
+    if (!password) {
+      setPasswordErr('Password required');
+      isReq = false;
+    } else if (password.length < 6) {
+      setPasswordErr('Password must be 6 or more characters');
+      isReq = false;
+    }
+    if (!email) {
+      setEmailErr('Email required');
+      isReq = false;
+    } else if (email.indexOf('@') === -1) {
+      setEmailErr('Email must be a valid email address');
+      isReq = false;
+    }
+
+    return isReq;
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(username, password, email, birthday);
+    const isReq = validate();
+    if (isReq) {
+      axios
+        .post('https://mats-js-myflixdb.herokuapp.com/users', {
+          Username: username,
+          Password: password,
+          Email: email,
+          Birthday: birthday,
+        })
+        .then((res) => {
+          const data = res.data;
+          console.log(data);
+          alert('Registration successful! Please login.');
+          window.open('/', '_self');
+        })
+        .catch((e) => {
+          console.error(e);
+          alert('Unable to register :(');
+        });
+    }
   };
 
   return (
@@ -34,6 +87,7 @@ export default function RegistrationView(props) {
                 placeholder="Enter your username"
                 required
               />
+              {usernameErr && <p>{usernameErr}</p>}
             </Form.Group>
             <Form.Group
               className="registration-form-group-password"
@@ -44,10 +98,11 @@ export default function RegistrationView(props) {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="Your password must be 8 or more characters"
-                minLength="8"
+                placeholder="Your password must be 6 or more characters"
+                minLength="6"
                 required
               />
+              {passwordErr && <p>{passwordErr}</p>}
             </Form.Group>
             <Form.Group
               className="registration-form-group-email"
@@ -61,16 +116,17 @@ export default function RegistrationView(props) {
                 placeholder="Enter your email address"
                 required
               />
+              {emailErr && <p>{emailErr}</p>}
             </Form.Group>
             <Form.Group controlId="formGroupBirthday">
-              <Form.Label>Birthday:</Form.Label>
+              <Form.Label>Date of birth:</Form.Label>
               <Form.Control
                 type="date"
                 value={birthday}
                 onChange={(e) => setBirthday(e.target.value)}
                 placeholder="Enter your birthday"
-                required
               />
+              {birthdayErr && <p>{birthdayErr}</p>}
             </Form.Group>
             <Button
               className="button-registration-view"
