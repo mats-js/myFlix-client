@@ -1,54 +1,125 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
+.movie-textarea.card-body {
+  padding: 0 15px 0 0;
 }
 
-img {
-  max-width: 200px;
-  height: 100%;
-  float: right;
-  margin-left: 10px;
-  margin-bottom: 10px;
+span.movie-description {
+  display: block;
+  padding-bottom: 15px;
 }
 
-.movie-view {
-  margin: 10px;
-  max-width: 800px;
-  padding: 10px;
-  border: 1px solid black;
-  border-radius: 5px;
-  background-color: rgba(55, 55, 151, 0.222);
-}
-
-.movie-title {
-  font-weight: bold;
-  font-size: 20px;
-  padding-bottom: 10px;
+div.movie-genre-description,
+div.movie-actors {
+  display: block;
+  padding-bottom: 15px;
 }
 
 .label {
   font-weight: bold;
 }
 
-button {
+.button-movie-view-add-favorite {
+  position: absolute;
+  right: 10px;
+}
+.login-card {
+  margin: auto;
+  max-width: 450px;
+}
+
+div.login-form-group-username {
+  margin-bottom: 20px;
+}
+
+.button-login-view {
+  margin-top: 20px;
+  margin-right: 20px;
+}
+.registration-card {
+  margin: auto;
+  max-width: 450px;
+}
+
+div.registration-form-group-username,
+div.registration-form-group-password,
+div.registration-form-group-email {
+  margin-bottom: 20px;
+}
+
+.button-registration-view {
+  margin-top: 20px;
+}
+.main-view {
+  padding: 50px 0;
+}
+
+.movie-card {
+  display: flex;
+  padding-bottom: 30px;
+}
+.profile-container {
+  height: 100vh;
+}
+
+div.profile-form-group-username,
+div.profile-form-group-password,
+div.profile-form-group-email {
+  margin-bottom: 20px;
+}
+
+.button-profile-view-update {
+  margin-top: 20px;
+}
+
+.button-profile-view-delete {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+span.label.headline-profile-mini-cards {
+  padding: 30px 0 20px 0;
+}
+
+.profile-movie-card-link {
+  color: white;
+}
+
+.button-profile-view-remove-favorite {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+.movie-genre-description > span.label,
+.headline-genre-mini-cards {
+  display: block;
+  margin: 0 0 15px 0;
+}
+
+.card-group-genre-mini-cards {
   margin-top: 10px;
 }
-form {
-  display: grid;
-}
-
-label {
+.movie-director-bio > span.label,
+.headline-director-mini-cards {
   display: block;
-  padding: 20px;
-  margin: auto;
+  margin: 15px 0;
 }
 
-button {
-  width: 200px;
-  margin: 5px auto;
-  font-size: 15px;
+.movie-director-birth > span.label,
+.movie-director-death > span.label {
+  font-weight: 400;
 }
-.my-flix {
-  color: steelblue;
+
+.card-group-director-mini-cards {
+  margin-top: 10px;
+}
+.button-movie-card {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+html,
+.app-container {
+  background-color: black;
 }
 /*# sourceMappingURL=index.c1e31cef.css.map */

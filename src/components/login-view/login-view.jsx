@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
-import { Container, Card, Form, Button } from 'react-bootstrap';
+import { Card, Form, Button } from 'react-bootstrap';
 
 import './login-view.scss';
 export default function LoginView(props) {
@@ -52,53 +52,48 @@ export default function LoginView(props) {
   };
 
   return (
-    <Container className="login-container">
-      <Card bg="dark" text="light" className="login-card">
-        <Card.Header className="text-center" as="h5">
-          Login
-        </Card.Header>
-        <Card.Body>
-          <Form>
-            <Form.Group
-              className="login-form-group-username"
-              controlId="formUsername"
-            >
-              <Form.Label>Username:</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-              />
-              {usernameErr && <p>{usernameErr}</p>}
-            </Form.Group>
+    <Card bg="dark" text="light" className="login-card">
+      <Card.Header className="text-center" as="h5">
+        Login
+      </Card.Header>
+      <Card.Body>
+        <Form>
+          <Form.Group
+            className="login-form-group-username"
+            controlId="formUsername"
+          >
+            <Form.Label>Username:</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Enter username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            {usernameErr && <p>{usernameErr}</p>}
+          </Form.Group>
 
-            <Form.Group
-              className="form-group-password"
-              controlId="formPassword"
-            >
-              <Form.Label>Password:</Form.Label>
-              <Form.Control
-                type="password"
-                placeholder="Enter password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              {passwordErr && <p>{passwordErr}</p>}
-            </Form.Group>
+          <Form.Group className="form-group-password" controlId="formPassword">
+            <Form.Label>Password:</Form.Label>
+            <Form.Control
+              type="password"
+              placeholder="Enter password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            {passwordErr && <p>{passwordErr}</p>}
+          </Form.Group>
 
-            <Button
-              className="button-login-view"
-              variant="secondary"
-              type="submit"
-              onClick={handleSubmit}
-            >
-              Log in
-            </Button>
-          </Form>
-        </Card.Body>
-      </Card>
-    </Container>
+          <Button
+            className="button-login-view"
+            variant="secondary"
+            type="submit"
+            onClick={handleSubmit}
+          >
+            Log in
+          </Button>
+        </Form>
+      </Card.Body>
+    </Card>
   );
 }
 
