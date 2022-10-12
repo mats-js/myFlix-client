@@ -81,7 +81,6 @@ function ProfileView(props) {
         )
         .then((res) => {
           const data = res.data;
-          console.log(data);
           updateUser(data.Username);
           localStorage.setItem('user', data.Username);
           alert(
@@ -265,7 +264,6 @@ function ProfileView(props) {
 
 ProfileView.propTypes = {
   user: PropTypes.string.isRequired,
-  movies: PropTypes.object.isRequired,
   favoriteMovies: PropTypes.array.isRequired,
   removeFavorite: PropTypes.func.isRequired,
   onBackClick: PropTypes.func.isRequired,
@@ -274,7 +272,6 @@ ProfileView.propTypes = {
 const mapStateToProps = (state) => {
   return {
     user: state.user,
-    movies: state.movies,
   };
 };
 

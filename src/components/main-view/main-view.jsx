@@ -172,6 +172,7 @@ class MainView extends React.Component {
               return (
                 <Col>
                   <ProfileView
+                    movies={movies}
                     favoriteMovies={favoriteMovies.map((movieId) => {
                       return movies.find((m) => m._id === movieId);
                     })}
@@ -285,7 +286,7 @@ class MainView extends React.Component {
 
 ProfileView.propTypes = {
   user: PropTypes.string.isRequired,
-  movies: PropTypes.object.isRequired,
+  movies: PropTypes.array.isRequired,
   favoriteMovies: PropTypes.array.isRequired,
 };
 
