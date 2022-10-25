@@ -20,7 +20,7 @@
     - Returns data about a director (name, bio, birth year, death year)
     - Displays example movies
 - Technologies used: JavaScript, React, React Bootstrap,React Redux, Parcel
-- Deployed app link: tbu
+- Deployed app link: https://mats-js-myflixdb.netlify.app
 
 ![Screenshot main view](/img/screenshot1.png?raw=true)
 
