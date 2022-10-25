@@ -1,0 +1,120 @@
+.main-view {
+  padding: 50px 0;
+}
+
+.movie-card {
+  padding-bottom: 30px;
+  display: flex;
+}
+
+.button-movie-card {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+.registration-card {
+  max-width: 450px;
+  margin: auto;
+}
+
+div.registration-form-group-username, div.registration-form-group-password, div.registration-form-group-email {
+  margin-bottom: 20px;
+}
+
+.button-registration-view {
+  margin-top: 20px;
+}
+
+.login-card {
+  max-width: 450px;
+  margin: auto;
+}
+
+div.login-form-group-username {
+  margin-bottom: 20px;
+}
+
+.button-login-view {
+  margin-top: 20px;
+  margin-right: 20px;
+}
+
+.profile-container {
+  height: 100vh;
+}
+
+div.profile-form-group-username, div.profile-form-group-password, div.profile-form-group-email {
+  margin-bottom: 20px;
+}
+
+.button-profile-view-update {
+  margin-top: 20px;
+}
+
+.button-profile-view-delete {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%)translateY(-50%);
+}
+
+span.label.headline-profile-mini-cards {
+  padding: 30px 0 20px;
+}
+
+.profile-movie-card-link {
+  color: #fff;
+}
+
+.button-profile-view-remove-favorite {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+.movie-textarea.card-body {
+  padding: 0 15px 0 0;
+}
+
+span.movie-description, div.movie-genre-description, div.movie-actors {
+  padding-bottom: 15px;
+  display: block;
+}
+
+.label {
+  font-weight: bold;
+}
+
+.button-movie-view-add-favorite {
+  position: absolute;
+  right: 10px;
+}
+
+.movie-genre-description > span.label, .headline-genre-mini-cards {
+  margin: 0 0 15px;
+  display: block;
+}
+
+.card-group-genre-mini-cards {
+  margin-top: 10px;
+}
+
+.movie-director-bio > span.label, .headline-director-mini-cards {
+  margin: 15px 0;
+  display: block;
+}
+
+.movie-director-birth > span.label, .movie-director-death > span.label {
+  font-weight: 400;
+}
+
+.card-group-director-mini-cards {
+  margin-top: 10px;
+}
+
+html, .app-container {
+  background-color: #000;
+}
+
+/*# sourceMappingURL=index.2b25e0b4.css.map */
