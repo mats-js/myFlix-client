@@ -1,20 +1,16 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
-import {
-  Container,
-  Form,
-  Button,
-  Card,
-  CardGroup,
-  Col,
-  Link,
-} from 'react-bootstrap';
+import { Container, Form, Button, Card, CardGroup, Col } from 'react-bootstrap';
 
 import { Link } from 'react-router-dom';
 
+import { connect } from 'react-redux';
+
+import { updateUser, deleteUser } from '../../actions/actions';
+
 import './profile-view.scss';
-export default function ProfileView(props) {
+function ProfileView(props) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
@@ -58,9 +54,6 @@ export default function ProfileView(props) {
     e.preventDefault();
     const isReq = validate();
     const token = localStorage.getItem('token');
-    console.log(isReq);
-    console.log(token);
-    console.log(user);
     if (isReq && token !== null && user !== null) {
       axios
         .put(
@@ -80,10 +73,11 @@ export default function ProfileView(props) {
         )
         .then((res) => {
           const data = res.data;
-          console.log(data);
-          alert('Update successful! Please log in with your new credentials');
-          localStorage.clear();
-          window.open('/', '_self');
+          updateUser(data.Username);
+          localStorage.setItem('user', data.Username);
+          alert(
+            'Update successful! Your changes will be visible after the next login.'
+          );
         })
         .catch((e) => {
           console.error(e);
@@ -103,12 +97,12 @@ export default function ProfileView(props) {
         .then((res) => {
           alert(`Your account has been deleted. We're sorry to see you go!`);
           localStorage.clear();
+          deleteUser({});
           window.open('/', '_self');
         })
         .catch((e) => console.log(e));
     }
   };
-  console.log(favoriteMovies);
 
   return (
     <Container className="profile-container">
@@ -261,5 +255,19 @@ export default function ProfileView(props) {
 }
 
 ProfileView.propTypes = {
+  user: PropTypes.string.isRequired,
   favoriteMovies: PropTypes.array.isRequired,
+  removeFavorite: PropTypes.func.isRequired,
+  onBackClick: PropTypes.func.isRequired,
 };
+
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+  };
+};
+
+export default connect(mapStateToProps, {
+  deleteUser,
+  updateUser,
+})(ProfileView);

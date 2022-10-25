@@ -19,5 +19,9 @@
   - Director view
     - Returns data about a director (name, bio, birth year, death year)
     - Displays example movies
-- Technologies used: JavaScript, React, React Bootstrap, Parcel
+- Technologies used: JavaScript, React, React Bootstrap,React Redux, Parcel
 - Deployed app link: tbu
+
+![Screenshot main view](/img/screenshot1.png?raw=true)
+
+![Screenshot movie view](/img/screenshot2.png?raw=true)

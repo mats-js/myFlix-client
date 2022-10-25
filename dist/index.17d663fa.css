@@ -1,38 +1,15 @@
-.movie-textarea.card-body {
-  padding: 0 15px 0 0;
+.main-view {
+  padding: 50px 0;
 }
 
-span.movie-description {
-  display: block;
-  padding-bottom: 15px;
+.movie-card {
+  display: flex;
+  padding-bottom: 30px;
 }
-
-div.movie-genre-description,
-div.movie-actors {
-  display: block;
-  padding-bottom: 15px;
-}
-
-.label {
-  font-weight: bold;
-}
-
-.button-movie-view-add-favorite {
+.button-movie-card {
   position: absolute;
+  bottom: 10px;
   right: 10px;
-}
-.login-card {
-  margin: auto;
-  max-width: 450px;
-}
-
-div.login-form-group-username {
-  margin-bottom: 20px;
-}
-
-.button-login-view {
-  margin-top: 20px;
-  margin-right: 20px;
 }
 .registration-card {
   margin: auto;
@@ -48,13 +25,18 @@ div.registration-form-group-email {
 .button-registration-view {
   margin-top: 20px;
 }
-.main-view {
-  padding: 50px 0;
+.login-card {
+  margin: auto;
+  max-width: 450px;
 }
 
-.movie-card {
-  display: flex;
-  padding-bottom: 30px;
+div.login-form-group-username {
+  margin-bottom: 20px;
+}
+
+.button-login-view {
+  margin-top: 20px;
+  margin-right: 20px;
 }
 .profile-container {
   height: 100vh;
@@ -90,6 +72,29 @@ span.label.headline-profile-mini-cards {
   bottom: 10px;
   right: 10px;
 }
+.movie-textarea.card-body {
+  padding: 0 15px 0 0;
+}
+
+span.movie-description {
+  display: block;
+  padding-bottom: 15px;
+}
+
+div.movie-genre-description,
+div.movie-actors {
+  display: block;
+  padding-bottom: 15px;
+}
+
+.label {
+  font-weight: bold;
+}
+
+.button-movie-view-add-favorite {
+  position: absolute;
+  right: 10px;
+}
 .movie-genre-description > span.label,
 .headline-genre-mini-cards {
   display: block;
@@ -113,13 +118,8 @@ span.label.headline-profile-mini-cards {
 .card-group-director-mini-cards {
   margin-top: 10px;
 }
-.button-movie-card {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-}
 html,
 .app-container {
   background-color: black;
 }
-/*# sourceMappingURL=index.c1e31cef.css.map */
+/*# sourceMappingURL=index.17d663fa.css.map */

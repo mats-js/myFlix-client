@@ -26,15 +26,8 @@ div.movie-actors {
   position: absolute;
   right: 10px;
 }
-.login-container {
-  height: 100vh;
-}
-
 .login-card {
   margin: auto;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
   max-width: 450px;
 }
 
@@ -46,15 +39,8 @@ div.login-form-group-username {
   margin-top: 20px;
   margin-right: 20px;
 }
-.registration-container {
-  height: 100vh;
-}
-
 .registration-card {
   margin: auto;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
   max-width: 450px;
 }
 
