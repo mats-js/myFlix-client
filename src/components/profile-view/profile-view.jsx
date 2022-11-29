@@ -57,7 +57,7 @@ function ProfileView(props) {
     if (isReq && token !== null && user !== null) {
       axios
         .put(
-          `https://mats-js-myflixdb.herokuapp.com/users/${user}`,
+          `https://mats-js-myflixdb.cyclic.app/users/${user}`,
 
           {
             Username: username,
@@ -91,7 +91,7 @@ function ProfileView(props) {
     const token = localStorage.getItem('token');
     if (confirm('Are you sure? This cannot be undone!')) {
       axios
-        .delete(`https://mats-js-myflixdb.herokuapp.com/users/${user}`, {
+        .delete(`https://mats-js-myflixdb.cyclic.app/users/${user}`, {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then((res) => {

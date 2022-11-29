@@ -44,7 +44,7 @@ class MainView extends React.Component {
 
   getMovies(token) {
     axios
-      .get('https://mats-js-myflixdb.herokuapp.com/movies', {
+      .get('https://mats-js-myflixdb.cyclic.app/movies', {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
@@ -65,7 +65,7 @@ class MainView extends React.Component {
         this.props.addFavorite(movieId);
         axios
           .post(
-            `https://mats-js-myflixdb.herokuapp.com/users/${user}/movies/${movieId}`,
+            `https://mats-js-myflixdb.cyclic.app/users/${user}/movies/${movieId}`,
             {},
             {
               headers: {
@@ -90,7 +90,7 @@ class MainView extends React.Component {
       this.props.removeFavorite(movieId);
       axios
         .delete(
-          `https://mats-js-myflixdb.herokuapp.com/users/${user}/movies/${movieId}`,
+          `https://mats-js-myflixdb.cyclic.app/users/${user}/movies/${movieId}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }

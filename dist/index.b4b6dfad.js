@@ -36025,7 +36025,7 @@ class MainView extends (0, _reactDefault.default).Component {
         this.getMovies(authData.token);
     }
     getMovies(token) {
-        (0, _axiosDefault.default).get("https://mats-js-myflixdb.herokuapp.com/movies", {
+        (0, _axiosDefault.default).get("https://mats-js-myflixdb.cyclic.app/movies", {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -36041,7 +36041,7 @@ class MainView extends (0, _reactDefault.default).Component {
         if (favoriteMovies.some((favId)=>favId === movieId)) console.log("Movie already added to favorites!");
         else if (token !== null && user !== null) {
             this.props.addFavorite(movieId);
-            (0, _axiosDefault.default).post(`https://mats-js-myflixdb.herokuapp.com/users/${user}/movies/${movieId}`, {}, {
+            (0, _axiosDefault.default).post(`https://mats-js-myflixdb.cyclic.app/users/${user}/movies/${movieId}`, {}, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -36057,7 +36057,7 @@ class MainView extends (0, _reactDefault.default).Component {
         const token = localStorage.getItem("token");
         if (token !== null && user !== null) {
             this.props.removeFavorite(movieId);
-            (0, _axiosDefault.default).delete(`https://mats-js-myflixdb.herokuapp.com/users/${user}/movies/${movieId}`, {
+            (0, _axiosDefault.default).delete(`https://mats-js-myflixdb.cyclic.app/users/${user}/movies/${movieId}`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -43049,7 +43049,7 @@ function RegistrationView(props) {
     const handleSubmit = (e)=>{
         e.preventDefault();
         const isReq = validate();
-        if (isReq) (0, _axiosDefault.default).post("https://mats-js-myflixdb.herokuapp.com/users", {
+        if (isReq) (0, _axiosDefault.default).post("https://mats-js-myflixdb.cyclic.app/users", {
             Username: username,
             Password: password,
             Email: email,
@@ -43308,7 +43308,7 @@ function LoginView(props) {
     const handleSubmit = (e)=>{
         e.preventDefault();
         const isReq = validate();
-        if (isReq) (0, _axiosDefault.default).post("https://mats-js-myflixdb.herokuapp.com/login", {
+        if (isReq) (0, _axiosDefault.default).post("https://mats-js-myflixdb.cyclic.app/login", {
             Username: username,
             Password: password
         }).then((res)=>{
@@ -43510,7 +43510,7 @@ function ProfileView(props) {
         e.preventDefault();
         const isReq = validate();
         const token = localStorage.getItem("token");
-        if (isReq && token !== null && user !== null) (0, _axiosDefault.default).put(`https://mats-js-myflixdb.herokuapp.com/users/${user}`, {
+        if (isReq && token !== null && user !== null) (0, _axiosDefault.default).put(`https://mats-js-myflixdb.cyclic.app/users/${user}`, {
             Username: username,
             Password: password,
             Email: email,
@@ -43532,7 +43532,7 @@ function ProfileView(props) {
     const handleDelete = (e)=>{
         e.preventDefault();
         const token = localStorage.getItem("token");
-        if (confirm("Are you sure? This cannot be undone!")) (0, _axiosDefault.default).delete(`https://mats-js-myflixdb.herokuapp.com/users/${user}`, {
+        if (confirm("Are you sure? This cannot be undone!")) (0, _axiosDefault.default).delete(`https://mats-js-myflixdb.cyclic.app/users/${user}`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }

@@ -37,7 +37,7 @@ export default function LoginView(props) {
     const isReq = validate();
     if (isReq) {
       axios
-        .post('https://mats-js-myflixdb.herokuapp.com/login', {
+        .post('https://mats-js-myflixdb.cyclic.app/login', {
           Username: username,
           Password: password,
         })

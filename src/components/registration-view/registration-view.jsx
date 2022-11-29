@@ -48,7 +48,7 @@ export default function RegistrationView(props) {
     const isReq = validate();
     if (isReq) {
       axios
-        .post('https://mats-js-myflixdb.herokuapp.com/users', {
+        .post('https://mats-js-myflixdb.cyclic.app/users', {
           Username: username,
           Password: password,
           Email: email,
